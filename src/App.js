@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import 'tachyons';
+import Page1 from './components/Page1';
+import Page2 from './components/Page2';
+import Page3 from './components/Page3';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  
+  const [routeState, setRouteState] = useState('page1');
+
+  const onClickHandler = (route) => (e) => {
+    e.preventDefault();
+    setRouteState(route);
+}
+
+  switch (routeState){
+    case 'page1':
+      return <Page1 onClickHandler={onClickHandler} />
+    case 'page2':
+      return <Page2 onClickHandler={onClickHandler} />
+    case 'page3':
+      return <Page3 onClickHandler={onClickHandler} />
+    default:
+     return <Page1 onClickHandler={onClickHandler} />
+  }
+
 }
 
 export default App;
