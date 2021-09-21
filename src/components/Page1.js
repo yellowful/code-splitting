@@ -3,7 +3,6 @@ import OneOOne from '../101.jpg'
 
 const Page1 = ({onClickHandler}) => {
     
-    
     return (
         <div className="w-100 vh-100 flex flex-column items-center bg-moon-gray pt5">
             <div className="tc w5 mv2">

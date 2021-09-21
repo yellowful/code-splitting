@@ -2,7 +2,6 @@ import React from 'react'
 import OneOOne from '../101.jpg'
 
 const Page2 = ({onClickHandler}) => {
-
     
     return (
         <div className="w-100 vh-100 flex flex-column items-center bg-moon-gray pt5">
