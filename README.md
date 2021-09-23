@@ -1,28 +1,34 @@
 # code splitting
 
-## before code splitting in developement mode
+## Other Branches
 
-| file name             | size   |
-|-----------------------|--------|
-| bundle.js             | 8.1 KB |
-| vendors~main.chunk.js | 450 KB |
-| main.chunk.js         | 4.7 KB |
+[without code splitting](https://github.com/yellowful/code-splitting)
 
-## before code splitting in build mode
+[with code splitting in route level](https://github.com/yellowful/code-splitting/tree/route-level)
 
-| file name                                | size     |
-|------------------------------------------|----------|
-| build/static/js/2.8bb83d86.chunk.js      | 41.73 KB |
-| build/static/js/3.dfc694e2.chunk.js      | 1.63 KB  |
-| build/static/js/runtime-main.59835288.js | 1.17 KB  |
-| build/static/js/main.3704debc.chunk.js   | 820 B    |
+[with code splitting in component level](https://github.com/yellowful/code-splitting/tree/component-level)
 
-## different code splitting in diffrent branches
+[with code splitting by React.lazy](https://github.com/yellowful/code-splitting/tree/react-lazy)
 
-```text
-* (HEAD -> main, origin/main) route page finished
-| * 77f39df (origin/route-level, route-level) code splitting in route level finished
-| * 95b15f1 route page finished
-|/  
-* ff81c29 Initialize project using Create React App
-```
+## after code splitting with React.lazy in developement mode
+
+### `main.chunk.js` shrinks
+
+| file name                  | size     |
+|----------------------------|----------|
+| bundle.js                  | 8.1 KB   |
+| vendors~main.chunk.js      | 450 KB   |
+| main.chunk.js              | 4.6 KB   |
+| page 2 clicked: 0.chunk.js | 2.2 KB   |
+| page 3 clicked: 1.chunk.js | 2.2 KB   |
+
+## After code splitting with React.lazy in build mode
+
+| file name                                | size                |
+|------------------------------------------|---------------------|
+| build/static/js/2.f7a3b573.chunk.js      | 41.73 KB (-2.25 KB) |
+| build/static/js/5.84c4e1e5.chunk.js      | 1.63 KB             |
+| build/static/js/runtime-main.03b27825.js | 1.19 KB (-3 B)      |
+| build/static/js/main.99ebc732.chunk.js   | 851 B (-204 B)      |
+| build/static/js/4.1194b4e5.chunk.js      | 443 B (-1 B)        |
+| build/static/js/3.6e10ab1b.chunk.js      | 441 B (-3 B)        |
