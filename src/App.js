@@ -22,6 +22,9 @@ function App() {
       // 為什麼要透過`()=>import('./components/Page2')`來傳`import('./components/Page2')`？
       // 是因為我們不想要`import('./components/Page3')`就執行而得到Page2，而是希望asyncLoadFunction被執行後，這個`()=>import('./components/Page3')`才會被執行，然後才去import page2
       // asyncLoadFunction吞了一個function，然後會return一個AsyncComponent
+      // 為什麼要這麼複雜，主要原因是import是async的，如果在這裡直接import，因為async的關係，所以還沒載入就會render錯誤
+      // 所以把import的事情透過asyncLoadFunction丟給一個component，在那個component裡面就可以利用life cycle或是useEffect來處理async
+      // 然後react或是hook就會自己處理async完成後rerender的事了
       const AsyncPage2 = asyncLoadFunction(()=>import('./components/Page2'))
       return <AsyncPage2 onClickHandler={onClickHandler} />
     case 'page3':
